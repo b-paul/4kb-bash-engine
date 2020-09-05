@@ -9,3 +9,6 @@ The rules from Aloril posted on the [TCEC discord server](discord.gg/EYuyrDr) ar
 3) No cheating like creating external Stockfish library, using libc and other system libraries OK
 4) Can naturally compress executable, just decompressor has be part of executable. (upx for example)
 ```
+
+## About
+Almost all of the board representation comes from [micro-max](https://home.hccnet.nl/h.g.muller/encode.html).

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo '#include <stdio.h>
+#include <string.h>
+#define C(S) strstr(s,S)==s
+#define E else if
+int main(){char s[2048];while(fgets(s,2048,stdin)!=0){if(C("uci"))printf("uciok\n");E(C("isready"))printf("readyok\n");E(C("quit"))return 0;}return 0;}' | gcc -xc -
+./a.out

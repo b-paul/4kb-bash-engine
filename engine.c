@@ -6,14 +6,14 @@ enum {
 };
 
 char board[128],
-     startBoard[] = {ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK},
+     str[2048],
+     startBoard[] = {ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK}
 #ifdef DEV
-     pieceChars[] = " PNBRQK  pnbrqk"
+     ,pieceChars[] = " PNBRQK  pnbrqk"
 #endif
      ;
 
 int main() {
-    char str[2048];
     while (fgets(str, 2048, stdin) != NULL) {
         if (strstr(str, "uci") == str)
             printf("uciok\n");
@@ -32,9 +32,6 @@ int main() {
                 board[i+16] = 17;
                 board[i+96] = 9;
             }
-            char *ptr = str;
-            ptr += 24;
-            // Parse moves here
         }
 #ifdef DEV
         else if (strstr(str, "print") == str) {

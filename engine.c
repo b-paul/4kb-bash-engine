@@ -13,19 +13,22 @@ char board[128],
 #endif
      ;
 
+int i,
+    eighthRank = 0x70;
+
 int main() {
     while (fgets(str, 2048, stdin) != NULL) {
         if (strstr(str, "uci") == str)
             printf("uciok\n");
         else if (strstr(str, "isready") == str)
-            printf("isready\n");
+            printf("readyok\n");
         else if (strstr(str, "position") == str) {
             // Set the board so the starting position
-            for (int i = 0; i < 8; i++) {
+            for (i = 0; i < 8; i++) {
                 // Set the piece row behind the pawns
                 // +40 indicates it is a white piece in its
                 // original position and +48 is the same for black
-                board[i] = (board[i+112] = startBoard[i]+40)+8;
+                board[i] = (board[i+eighthRank] = startBoard[i]+40)+8;
 
                 // Set the pawns, 17 indicating a black pawn
                 // and 9 indicating a white pawn
@@ -35,14 +38,14 @@ int main() {
         }
 #ifdef DEV
         else if (strstr(str, "print") == str) {
-            for (int i = 0; i < 121; i++)
+            for (i = 0; i < 121; i++)
                 printf("%c", 
                         // If i&8 basically means if i is at
                         // the end of the current row on the board
                         i&8
                         // If this is the case, then increment 
                         // i by 7 to move it up to the next row
-                        &&(i+=7)
+                        &&i+=7
                         // 10 is the character for a new line
                         ?10:
                         // Else print the character of the piece

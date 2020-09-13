@@ -7,7 +7,14 @@ enum {
 
 char board[128],
      str[2048],
-     startBoard[] = {ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK}
+     representation[] = {
+         -16, -15, 17, 0,
+         16, 15, 17, 0,
+         1, -1, 16, -16, 0,
+         1, -1, 16, -16, 15, -15, 17, -17, 0,
+         14, -14, 18, -18, 31, -31, 33, -33, 0,
+         -1, 3, 21, 12, 16, 7, 12,
+         ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK}
 #ifdef DEV
      ,pieceChars[] = " PNBRQK  pnbrqk"
 #endif
@@ -28,7 +35,7 @@ int main() {
                 // Set the piece row behind the pawns
                 // +40 indicates it is a white piece in its
                 // original position and +48 is the same for black
-                board[i] = (board[i+eighthRank] = startBoard[i]+40)+8;
+                board[i] = (board[i+eighthRank] = representation[i]+40)+8;
 
                 // Set the pawns, 17 indicating a black pawn
                 // and 9 indicating a white pawn

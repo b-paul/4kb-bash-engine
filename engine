@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 echo '#include <stdio.h>
 #include <string.h>
 #define C(S) strstr(s,S)==s
 #define E else if
 #define F(I,S,N) for(I<S;I<N;I++)
-char b[128],s[2048],B[]={4,2,3,5,6,3,2,4};int i,V=112;int main(){while(fgets(s,2048,stdin)!=0){if(C("uci"))printf("uciok\n");E(C("isready"))printf("readyok\n");E(C("position")){F(i,0,8){b[i]=(b[i+V]=B[i]+40)+8;b[i+16]=17;b[i+96]=9;}}E(C("quit"))return 0;}return 0;}' | gcc -o $$ -xc -
+char b[128],s[2048],B[]={-16,-15,-17,0,1,16,0,1,16,15,17,0,14,18,31,33,0,7,-1,11,6,8,3,6,4,2,3,5,6,3,2,4};int i,V=112;int main(){while(fgets(s,2048,stdin)!=0){if(C("uci"))printf("uciok\n");E(C("isready"))printf("readyok\n");E(C("position")){F(i,0,8){b[i]=(b[i+V]=B[i]+40)+8;b[i+16]=17;b[i+96]=9;}}E(C("quit"))return 0;}return 0;}' | gcc -o $$ -xc -
 ./$$
 rm $$
